@@ -38,4 +38,7 @@ void AngleCalculate(void)//角度计算函数
     g_fCarAngle = ComplementaryFilter(g_fAccAngle, g_fGyroAngleSpeed, dt);
 }
 
-
+/* 函数 AngleCalculate() 的主要作用：先将加速度数据除于灵敏度，将加速度数据由 LSB 转化成 g。注意变量类型使用 float 类型是为了保持精度，使用 atan2() 函数计算出角度（单位为弧度），
+除以 3.14 再乘 180°，将单位转换成度。
+将陀螺仪数据除于灵敏度，得到角速度，单位为 deg/s。
+最后，将加速度初算的角度和陀螺仪角速度送入互补滤波器进行数据融合，得到最终稳定的精准小车倾角。*/
